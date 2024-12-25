@@ -1,0 +1,64 @@
+configuration {
+  display-drun: "drun";
+  display-window: "win";
+  drun-display-format: "{name}";
+  font: "JetBrainsMono Nerd Font 13";
+  modi: "window,run,drun";
+  show-icons: true;
+  terminal: "alacritty";
+}
+
+@theme "custom"
+
+* {
+  opacity: 0.5;
+  border: 0;
+  padding: 2 2 2 2;
+  spacing: 0;
+}
+
+window {
+  width: 32%;
+}
+
+element {
+  padding: 10 12;
+}
+
+element-text {
+  vertical-align: 0.5;
+}
+
+element-icon {
+  size: 20;
+  padding: 0 12 0 0;
+}
+
+entry {
+  padding: 12;
+}
+
+inputbar {
+  children: [prompt, entry];
+}
+
+listview {
+  columns: 1;
+  lines: 10;
+}
+
+mainbox {
+  children: [inputbar, listview];
+}
+
+prompt {
+  enabled: true;
+  padding: 12 0 0 12;
+}
+
+element selected.active,
+element selected.normal {
+  background-color: @blue;
+}
+
+/* vim: ft=sass

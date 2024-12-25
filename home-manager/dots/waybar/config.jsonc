@@ -1,0 +1,180 @@
+{
+  // Basics
+  "layer": "top",
+  "position": "top",
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "margin-right": 0,
+  "margin-left": 0,
+
+  // Modules
+  "modules-left": [
+    "custom/separator",
+    "clock",
+    "custom/separator",
+    "cpu",
+    // "temperature",
+    "custom/separator",
+    "memory",
+    "custom/separator",
+    "disk#one"
+    // "custom/separator",
+    // "custom/music"
+  ],
+  "modules-center": ["sway/workspaces", "sway/mode", "sway/window"],
+  "modules-right": [
+    "tray",
+    "custom/separator",
+    "idle_inhibitor",
+    "custom/separator",
+    "backlight",
+    "custom/separator",
+    "pulseaudio",
+    "custom/separator",
+    "bluetooth",
+    "custom/separator",
+    "network",
+    "custom/separator",
+    "battery",
+    "custom/separator",
+    "custom/powermenu",
+    "custom/separator"
+  ],
+
+  "clock": {
+    "format": "{:%a %d %b %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "cpu": {
+    "states": {
+      "good": 0,
+      "warning": 70,
+      "critical": 90
+    },
+    "interval": 1,
+    "format": "  {usage:2}%"
+  },
+  // "temperature": {
+  //  "thermal-zone": 3,
+  //  "interval": 1,
+  //  "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+  //  "critical-threshold": 80,
+  //  "format-critical": "({temperatureC}°C)",
+  //  "format": "({temperatureC}°C)"
+  // },
+  "memory": {
+    "states": {
+      "good": 0,
+      "warning": 70,
+      "critical": 85
+    },
+    "interval": 5,
+    "format": "  {:2}%"
+  },
+  "disk#one": {
+    "states": {
+      "good": 0,
+      "warning": 70,
+      "critical": 95
+    },
+    "interval": 10,
+    "format": "󰉉  {percentage_used:2}%",
+    "path": "/"
+  },
+  "custom/music": {
+    "format": "{}",
+    "on-click": "playerctl play-pause",
+    "exec": "bash $HOME/.config/scripts/player.sh",
+    "return-type": "json",
+    "escape": true,
+    "interval": 1
+  },
+  "sway/workspaces": {
+    "all-outputs": true,
+    "format": "{name}"
+  },
+  "sway/workspaces.focused": {
+    "all-outputs": true,
+    "format": "{name}"
+  },
+  "sway/window": {
+    "format": ""
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃜", "󰃛", "󰃚"],
+    //"on-scroll-up": "brightnessctl set +5%",
+    //"on-scroll-down": "brightnessctl set 5%-"
+  },
+  "bluetooth": {
+    "format-connected": "󰂰",
+    "format-on": "󰂱",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "on-click": "bash $HOME/.config/scripts/bluetooth_menu"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}% {format_source}",
+    "format-bluetooth": "{icon}  {volume}%  {format_source}",
+    "format-bluetooth-muted": "  {icon}  {format_source}",
+    "format-muted": "  {format_source}",
+    // "format-source": " {volume}%",
+    "format-source": "󰍬 {volume}%",
+    // "format-source-muted": "󰍭",
+    "format-source-muted": "󰍭",
+    "format-icons": {
+      "headphone": "󰋋",
+      "headset": "󰋎",
+      "phone": " ",
+      "portable": " ",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "pavucontrol"
+  },
+  "network": {
+    "format-wifi": "󰖩 {signalStrength}%",
+    "format-ethernet": "  {ifname}",
+    "format-disconnected": "󱛅",
+    "tooltip-format": "{essid} - {ifname}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 30
+  },
+   //"custom/vpn": {
+   //  "format": " {icon}",
+   //  "exec": "$HOME/.config/waybar/modules/vpn.sh",
+   //  "return-type": "json",
+   //  "interval": 5,
+   //  "format-icons": [" ",""]
+   //},
+  "battery": {
+    "states": {
+      "good": 100,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󱐋 {capacity}%",
+    "interval": 5,
+    "format-icons": [" ", " ", " ", " ", " "]
+  },
+  "custom/separator": {
+    "format": "  ",
+    "tooltip": false
+  },
+  "custom/powermenu": {
+    "format": "",
+    "on-click": "rofi -show power-menu -modi power-menu:~/.config/scripts/power_menu",
+    "tooltip": false
+  }
+}

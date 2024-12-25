@@ -1,0 +1,71 @@
+format = """
+[░▒▓](black)\
+$username\
+[](bg:blue fg:black)\
+$directory\
+[](fg:blue bg:#394260)\
+$git_branch\
+$git_status\
+[](fg:#394260 bg:#2b3248)\
+$rust\
+$python\
+$c\
+[](fg:#2b3248 bg:#1d2230)\
+$shell\
+$nix_shell\
+[](fg:#1d2230)\
+\n$character"""
+
+# add_newline = false
+continuation_prompt = "[❯ ](purple)"
+
+[character]
+success_symbol = "[❯](blue)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[](purple)"
+
+[username]
+disabled = false
+show_always = true
+style_user = "bg:black fg:bright-white"
+format = '[ $user ]($style)'
+
+[directory]
+style = "bold fg:black bg:blue"
+format = "[ $path ]($style)"
+# truncate_to_repo = false
+# truncation_length = 50
+# truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:bright-cyan bg:#394260)]($style)'
+
+[git_status]
+deleted = "x"
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:cyan bg:#394260)]($style)'
+
+[python]
+symbol = "󰌠"
+style = "bg:#2b3248"
+format = '[[ $symbol ($version) ](fg:bright-blue bg:#2b3248)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#2b3248"
+format = '[[ $symbol ($version) ](fg:bright-blue bg:#2b3248)]($style)'
+
+[c]
+symbol = ""
+style = "bg:#2b3248"
+format = '[[ $symbol ($version) ](fg:bright-blue bg:#2b3248)]($style)'
+
+[nix_shell]
+disabled = false
+impure_msg = "[impure](fg:red bg:#1d2230)"
+pure_msg = "[pure](fg:blue bg:#1d2230)"
+unknown_msg = "[unknown](fg:purple bg:#1d2230)"
+symbol = "󱄅"
+format = '[ $symbol $state ($name) ](fg:blue bg:#1d2230)'

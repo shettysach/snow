@@ -1,0 +1,43 @@
+# NIX
+
+[[language]]
+name = "nix"
+auto-format = true
+formatter.command = "nixfmt"
+
+# RUST
+
+[[language]]
+name = "rust"
+scope = "source.rust"
+injection-regex = "rust"
+file-types = ["rs"]
+roots = ["Cargo.toml", "Cargo.lock"]
+auto-format = true
+language-servers = [ "rust-analyzer" ]
+indent = { tab-width = 4, unit = "    " }
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+provideFormatter = true
+cargo.features = "all"
+
+[language-server.rust-analyzer.config.inlayHints]
+bindingModeHints.enable = false 
+closingBraceHints.minLines = 10
+closureReturnTypeHints.enable = "with_block"
+discriminantHints.enable = "fieldless"
+lifetimeElisionHints.enable = "skip_trivial"
+typeHints.hideClosureInitialization = false
+
+# PYTHON
+
+[[language]]
+name = "python"
+language-servers = ["ruff"]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
