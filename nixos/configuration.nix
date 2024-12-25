@@ -25,12 +25,6 @@
   };
 
   security.polkit.enable = true;
-  services.xserver.enable = true;
-  # services.xserver.libinput.enable = true;
-
-  # services.displayManager.sddm.enable = true;
-  # services.displayManager.sddm.wayland.enable = true;
-  # services.desktopManager.plasma6.enable = true;
 
   services.xserver.xkb = {
     layout = "us";
@@ -51,20 +45,21 @@
     #media-session.enable = true;
   };
 
+  programs = {
+    light.enable = true;
+    zsh.enable = true;
+  };
+
   users.users.sword = {
     isNormalUser = true;
     description = "Sword";
+    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"
       "video"
     ];
-    packages = with pkgs; [ kdePackages.kate ];
   };
-
-  programs.light.enable = true;
-  programs.zsh.enable = true;
-  users.users.sword.shell = pkgs.zsh;
 
   environment.variables.EDITOR = "nvim";
 

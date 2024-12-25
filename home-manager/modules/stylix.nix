@@ -4,21 +4,12 @@
   stylix = {
     enable = true;
     autoEnable = true;
+
     base16Scheme = ../themes/tokyo-night-custom.yaml;
     image = ../wallpapers/aurora_lake.jpg;
 
     targets = {
-      firefox.enable = true;
-      gtk.enable = true;
-      bat.enable = true;
-      btop.enable = true;
-
-      rofi.enable = true;
-      sway.enable = true;
-      waybar.enable = true;
-      swaylock.enable = true;
       swaylock.useImage = false;
-
       fzf.enable = false;
       helix.enable = false;
     };
@@ -35,7 +26,7 @@
       };
 
       # monospace = {
-      #   name = "JetBrainsMono NF";
+      #   name = "JetBrainsMono Nerd Font";
       #   package = pkgs.nerd-fonts.jetbrains-mono;
       # };
 
@@ -50,6 +41,5 @@
       name = "Bibata-Original-Classic";
       size = 20;
     };
-
   };
 }

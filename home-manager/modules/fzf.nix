@@ -10,13 +10,12 @@
     ];
 
     fileWidgetCommand = "fd --type f";
-
     fileWidgetOptions = [
       "--preview 'bat --color always {}'"
     ];
 
     changeDirWidgetOptions = [
-      "--preview 'eza -T --git-ignore --icons always --color always {}'"
+      "--preview 'eza -T -L 3 --git-ignore --icons always --color always {}'"
     ];
   };
 }

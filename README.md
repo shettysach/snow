@@ -1,5 +1,3 @@
-NixOS config
-
 ```console
 .
 ├── README.md
@@ -15,24 +13,18 @@ NixOS config
 │   ├── hardware-configuration.nix
 │   └── configuration.nix
 ├── home-manager
-│   ├── zsh.nix
 │   ├── wallpapers
 │   │   ├── aurora_lake.jpg
 │   │   └── aurora_ice.jpg
 │   ├── themes
 │   │   └── tokyo-night-custom.yaml
 │   ├── modules
-│   │   ├── waybar.nix
+│   │   ├── zsh.nix
 │   │   ├── sway.nix
 │   │   ├── stylix.nix
-│   │   ├── starship.nix
-│   │   ├── scripts.nix
-│   │   ├── rofi.nix
 │   │   ├── mod.nix
-│   │   ├── mako.nix
-│   │   ├── helix.nix
 │   │   ├── fzf.nix
-│   │   └── bat.nix
+│   │   └── dots.nix
 │   ├── home.nix
 │   └── dots
 │       ├── waybar
@@ -47,9 +39,11 @@ NixOS config
 │       │   └── battery.sh
 │       ├── rofi
 │       │   └── config.rasi
-│       └── helix
-│           ├── languages.toml
-│           └── config.toml
+│       ├── helix
+│       │   ├── languages.toml
+│       │   └── config.toml
+│       └── fastfetch
+│           └── config.jsonc
 ├── flake.nix
 ├── flake.lock
 └── devshells

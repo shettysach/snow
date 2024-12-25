@@ -16,7 +16,6 @@
       mako
       libnotify
       swayidle
-      swayimg
       swaylock
 
       grim

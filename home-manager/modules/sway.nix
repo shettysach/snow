@@ -145,9 +145,16 @@ in
     settings = {
       indicator-radius = 100;
       indicator-thickness = 10;
-      line-uses-ring = true;
       font-size = 45;
     };
   };
 
+  services.mako = {
+    enable = true;
+    icons = true;
+    actions = true;
+    layer = "overlay";
+
+    defaultTimeout = 6000;
+  };
 }

@@ -31,6 +31,9 @@
     bat
     fd
     mpv
+    imv
+
+    gammastep
 
     networkmanagerapplet
     playerctl

@@ -5,8 +5,7 @@
     enable = true;
     enableCompletion = true;
     historySubstringSearch.enable = true;
-    # syntaxHighlighting.enable = true;
-    # autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
 
     plugins = [
       {
@@ -26,6 +25,7 @@
       nv = "nvim";
       fzfh = "fd -H . | fzf";
       fzfp = "fzf --preview 'bat --color=always {}'";
+      neofetch = "fastfetch";
     };
 
     localVariables = {
@@ -35,6 +35,17 @@
       ZVM_VI_HIGHLIGHT_BACKGROUND = "magenta";
       ZVM_VI_EDITOR = "nvim";
       ZVM_INIT_MODE = "sourcing";
+
+    };
+
+    syntaxHighlighting.styles = {
+      "arg0" = "fg=cyan";
+      "path" = "fg=blue";
+      "unknown-token" = "fg=white";
+      "suffix-alias" = "fg=green";
+      "precommand" = "fg=green";
+      "autodirectory" = "fg=green";
+      "comment" = "fg=black";
     };
 
     initExtra = ''
