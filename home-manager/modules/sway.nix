@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 let
   cfg = config.wayland.windowManager.sway.config;
@@ -12,11 +12,12 @@ in
     config = {
       startup = [
         { command = "autotiling-rs"; }
-        { command = "bash ${scripts}/battery.sh"; }
+        { command = "clipse -listen"; }
+        { command = "${scripts}/battery.sh"; }
       ];
 
       modifier = "Mod1";
-      terminal = "alacritty";
+      terminal = "ghostty";
       menu = "rofi -show drun";
 
       gaps = {
@@ -106,8 +107,8 @@ in
         "${cfg.modifier}+m" = "exec rofi -show power-menu -modi power-menu:${scripts}/power_menu";
         "${cfg.modifier}+Shift+b" = "exec bash ${scripts}/bluetooth_menu";
 
-        "XF86MonBrightnessDown" = "exec light -U 10";
-        "XF86MonBrightnessUp" = "exec light -A 10";
+        "XF86MonBrightnessDown" = "exec light -U 5";
+        "XF86MonBrightnessUp" = "exec light -A 5";
 
         "XF86AudioRaiseVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
         "XF86AudioLowerVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
@@ -119,6 +120,11 @@ in
         "XF86AudioPrev" = "exec 'playerctl prev'";
       };
     };
+
+    extraConfig = ''
+      bindgesture swipe:right workspace prev
+      bindgesture swipe:left workspace next
+    '';
 
     systemd = {
       enable = true;
@@ -143,8 +149,9 @@ in
   programs.swaylock = {
     enable = true;
     settings = {
-      indicator-radius = 100;
-      indicator-thickness = 10;
+      daemonize = true;
+      indicator-radius = 125;
+      indicator-thickness = 5;
       font-size = 45;
     };
   };
@@ -156,5 +163,37 @@ in
     layer = "overlay";
 
     defaultTimeout = 6000;
+  };
+
+  services.swayidle = {
+    enable = true;
+    events = [
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock}/bin/swaylock";
+      }
+
+      {
+        event = "lock";
+        command = "${pkgs.swaylock}/bin/swaylock";
+      }
+    ];
+    timeouts = [
+      {
+        timeout = 5 * 60;
+        command = "${pkgs.swaylock}/bin/swaylock";
+      }
+
+      {
+        timeout = 10 * 60;
+        command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
+        resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
+      }
+
+      {
+        timeout = 15 * 60;
+        command = "${pkgs.systemd}/bin/systemctl suspend";
+      }
+    ];
   };
 }

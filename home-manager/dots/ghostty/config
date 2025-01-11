@@ -1,0 +1,25 @@
+theme = tokyonight
+background = #16161E
+background-opacity = 0.875
+
+shell-integration = zsh
+resize-overlay = never
+
+font-size = 14
+font-thicken = true
+cursor-invert-fg-bg = true
+
+window-decoration = false
+keybind = super+d=toggle_window_decorations
+
+confirm-close-surface = false
+
+keybind = super+r=reload_config
+
+keybind = super+h=goto_split:left
+keybind = super+j=goto_split:bottom
+keybind = super+k=goto_split:top
+keybind = super+l=goto_split:right
+
+keybind = super+n=jump_to_prompt:1
+keybind = super+p=jump_to_prompt:-1

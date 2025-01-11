@@ -5,45 +5,61 @@
 
   environment.systemPackages = with pkgs; [
 
-    # Nix
+    # -- Nix --
 
     home-manager
     nixfmt-rfc-style
     nixd
     nil
 
-    # Dev
+    # -- Dev --
+
+    ghostty
 
     neovim
     helix
-    alacritty
+
+    obsidian
+
     git
 
-    # TUI / CLI utils
+    # -- TUI / CLI utils --
 
     fastfetch
-    ripgrep
     btop
-    fzf
     dua
+
     lsd
     eza
+
+    zoxide
+    ripgrep
     bat
+    fzf
     fd
+
     mpv
     imv
+
+    zip
+    unzip
 
     gammastep
 
     networkmanagerapplet
-    playerctl
 
-    # Browser
+    playerctl
+    pulseaudio
+    pulseaudio-ctl
+    pavucontrol
+
+    # -- Browser --
 
     brave
     librewolf-wayland
 
     libreoffice-qt6
+    zathura
 
     # Misc
 

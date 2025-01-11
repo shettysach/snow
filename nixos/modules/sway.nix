@@ -6,8 +6,8 @@
     wrapperFeatures.gtk = true;
 
     extraPackages = with pkgs; [
-      wlr-randr
       wl-clipboard
+      clipse
 
       waybar
       rofi-wayland

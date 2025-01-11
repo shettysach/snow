@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.zsh = {
@@ -22,7 +22,6 @@
     ];
 
     shellAliases = {
-      nv = "nvim";
       fzfh = "fd -H . | fzf";
       fzfp = "fzf --preview 'bat --color=always {}'";
       neofetch = "fastfetch";
@@ -36,6 +35,7 @@
       ZVM_VI_EDITOR = "nvim";
       ZVM_INIT_MODE = "sourcing";
 
+      ICE = "${config.xdg.configHome}/ice";
     };
 
     syntaxHighlighting.styles = {
@@ -46,6 +46,9 @@
       "precommand" = "fg=green";
       "autodirectory" = "fg=green";
       "comment" = "fg=black";
+      "single-quoted-argument" = "fg=green";
+      "double-quoted-argument" = "fg=green";
+      "dollar-quoted-argument" = "fg=magenta";
     };
 
     initExtra = ''

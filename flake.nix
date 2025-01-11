@@ -13,6 +13,7 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
+
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,7 +49,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # -- mine --
+    # -- misc --
 
     cohle = {
       url = "github:shettysach/cohle";
@@ -57,6 +58,7 @@
       inputs.rust-overlay.follows = "rust-overlay";
       inputs.flake-utils.follows = "flake-utils";
     };
+
   };
 
   outputs =

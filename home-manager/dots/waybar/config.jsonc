@@ -9,7 +9,6 @@
 
   // Modules
   "modules-left": [
-    "custom/separator",
     "clock",
     "custom/separator",
     "cpu",
@@ -81,14 +80,14 @@
     "format": "󰉉  {percentage_used:2}%",
     "path": "/"
   },
-  "custom/music": {
-    "format": "{}",
-    "on-click": "playerctl play-pause",
-    "exec": "bash $HOME/.config/scripts/player.sh",
-    "return-type": "json",
-    "escape": true,
-    "interval": 1
-  },
+  //"custom/music": {
+  //  "format": "{}",
+  //  "on-click": "playerctl play-pause",
+  //  "exec": "bash $HOME/.config/scripts/player.sh",
+  //  "return-type": "json",
+  //  "escape": true,
+  //  "interval": 1
+  //},
   "sway/workspaces": {
     "all-outputs": true,
     "format": "{name}"
@@ -160,8 +159,8 @@
   "battery": {
     "states": {
       "good": 100,
-      "warning": 30,
-      "critical": 15
+      "warning": 35,
+      "critical": 20
     },
     "format": "{icon} {capacity}%",
     "format-charging": "󱐋 {capacity}%",

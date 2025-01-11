@@ -9,6 +9,11 @@ soft-wrap.enable = true
 completion-trigger-len = 1
 completion-replace = true
 completion-timeout = 100
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "hint"
 
 [editor.lsp]
 display-messages = true

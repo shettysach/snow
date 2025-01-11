@@ -1,5 +1,5 @@
-```console
 .
+├── tokyonight.yaml
 ├── README.md
 ├── nixos
 │   ├── packages.nix
@@ -16,8 +16,6 @@
 │   ├── wallpapers
 │   │   ├── aurora_lake.jpg
 │   │   └── aurora_ice.jpg
-│   ├── themes
-│   │   └── tokyo-night-custom.yaml
 │   ├── modules
 │   │   ├── zsh.nix
 │   │   ├── sway.nix
@@ -34,7 +32,6 @@
 │       │   └── starship.toml
 │       ├── scripts
 │       │   ├── power_menu
-│       │   ├── player.sh
 │       │   ├── bluetooth_menu
 │       │   └── battery.sh
 │       ├── rofi
@@ -42,15 +39,9 @@
 │       ├── helix
 │       │   ├── languages.toml
 │       │   └── config.toml
+│       ├── ghostty
+│       │   └── config
 │       └── fastfetch
 │           └── config.jsonc
 ├── flake.nix
-├── flake.lock
-└── devshells
-    ├── rust
-    │   ├── rust-toolchain.toml
-    │   └── flake.nix
-    └── python
-        ├── pyproject.toml
-        └── flake.nix
-```
+└── flake.lock

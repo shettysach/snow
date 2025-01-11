@@ -45,7 +45,6 @@ window#waybar {
 #custom-powermenu,
 #network,
 #taskbar {
-  /*color: #C0CAF5; */
   padding: 2px 10px 2px 10px;
 }
 
@@ -81,6 +80,7 @@ padding: 3px 10px 0 0;
 #cpu.warning,
 #disk.one.warning,
 #memory.warning {
+  color: #FF9E64;
 }
 
 #battery.critical,
@@ -89,6 +89,7 @@ padding: 3px 10px 0 0;
 #memory.critical,
 #network.disconnected,
 #pulseaudio.muted {
+  color: #F7768E;
 }
 
 #tray {
