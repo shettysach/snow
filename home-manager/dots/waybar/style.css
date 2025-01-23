@@ -80,7 +80,7 @@ padding: 3px 10px 0 0;
 #cpu.warning,
 #disk.one.warning,
 #memory.warning {
-  color: #FF9E64;
+  color: #E0AF68;
 }
 
 #battery.critical,

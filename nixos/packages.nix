@@ -20,6 +20,7 @@
     helix
 
     obsidian
+    texliveSmall
 
     git
 
@@ -29,11 +30,10 @@
     btop
     dua
 
-    lsd
-    eza
-
     zoxide
     ripgrep
+    lsd
+    eza
     bat
     fzf
     fd
@@ -53,13 +53,15 @@
     pulseaudio-ctl
     pavucontrol
 
-    # -- Browser --
+    # -- GUI --
 
     brave
     librewolf-wayland
 
-    libreoffice-qt6
     zathura
+
+    fractal
+    discord
 
     # Misc
 
@@ -68,5 +70,6 @@
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    lora
   ];
 }

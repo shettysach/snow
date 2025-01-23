@@ -40,7 +40,6 @@
     enable = true;
     options = {
       first-page-column = "1:1";
-      smooth-scroll = true;
       statusbar-home-tilde = true;
       window-title-home-tilde = true;
       statusbar-basename = true;

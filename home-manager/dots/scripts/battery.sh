@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 while true; do
   status=$(cat /sys/class/power_supply/BAT0/status)
@@ -6,9 +6,9 @@ while true; do
 
   if [ "$status" == "Discharging" ]; then
       if [ "$level" -le 20 ]; then
-          notify-send --urgency CRITICAL "BATTERY LOW" "$level%"  -t 60000
+          notify-send --urgency CRITICAL "BATTERY LOW" "$level%" -t 60000
       elif [ "$level" -le 35 ]; then
-          notify-send --urgency LOW "BATTERY LOW" "$level%"  -t 60000
+          notify-send --urgency LOW "BATTERY LOW" "$level%" -t 60000
       fi
   fi
   

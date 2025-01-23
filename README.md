@@ -1,3 +1,4 @@
+```console
 .
 ├── tokyonight.yaml
 ├── README.md
@@ -45,3 +46,4 @@
 │           └── config.jsonc
 ├── flake.nix
 └── flake.lock
+```

@@ -4,8 +4,14 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    historySubstringSearch.enable = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+
+    historySubstringSearch = {
+      enable = true;
+      searchUpKey = "^P";
+      searchDownKey = "^N";
+    };
 
     plugins = [
       {
@@ -35,7 +41,7 @@
       ZVM_VI_EDITOR = "nvim";
       ZVM_INIT_MODE = "sourcing";
 
-      ICE = "${config.xdg.configHome}/ice";
+      NIXOS_CONFIG = "${config.xdg.configHome}/ice";
     };
 
     syntaxHighlighting.styles = {
@@ -53,10 +59,10 @@
 
     initExtra = ''
       function zvm_after_init() {
-          bindkey '^R' fzf-history-widget
-          bindkey '^P' history-substring-search-up
-          bindkey '^N' history-substring-search-down
+          bindkey '^r' fzf-history-widget
       }
+
+      bindkey '^o' autosuggest-accept
 
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color always --icon always $realpath'
       zstyle ':fzf-tab:*' switch-group '<' '>'

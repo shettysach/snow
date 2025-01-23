@@ -12,8 +12,6 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    nixCats.url = "github:BirdeeHub/nixCats-nvim";
-
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";

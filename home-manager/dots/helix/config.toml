@@ -13,7 +13,7 @@ end-of-line-diagnostics = "hint"
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
-other-lines = "hint"
+other-lines = "disable"
 
 [editor.lsp]
 display-messages = true

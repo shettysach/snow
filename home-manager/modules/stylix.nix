@@ -5,10 +5,8 @@
     enable = true;
     autoEnable = true;
 
+    image = ../wallpapers/aurora_ice.jpg;
     base16Scheme = ../../tokyonight.yaml;
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
-    # override.base05 = "#A9B1D6";
-    image = ../wallpapers/aurora_lake.jpg;
 
     targets = {
       swaylock.useImage = false;
@@ -39,19 +37,17 @@
       };
     };
 
-    opacity.terminal = 0.85;
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Original-Classic";
+      size = 22;
+    };
 
     iconTheme = {
       enable = true;
       package = pkgs.kdePackages.breeze-icons;
       dark = "breeze-dark";
       light = "breeze";
-    };
-
-    cursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Original-Classic";
-      size = 22;
     };
   };
 }
