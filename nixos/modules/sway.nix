@@ -13,8 +13,9 @@
       rofi-wayland
       autotiling-rs
 
-      mako
+      dunst
       libnotify
+
       swayidle
       swaylock
 

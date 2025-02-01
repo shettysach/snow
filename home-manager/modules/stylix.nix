@@ -43,6 +43,10 @@
       size = 22;
     };
 
+    opacity = {
+      terminal = 0.8;
+    };
+
     iconTheme = {
       enable = true;
       package = pkgs.kdePackages.breeze-icons;

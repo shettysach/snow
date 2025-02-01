@@ -30,7 +30,6 @@
     shellAliases = {
       fzfh = "fd -H . | fzf";
       fzfp = "fzf --preview 'bat --color=always {}'";
-      neofetch = "fastfetch";
     };
 
     localVariables = {
@@ -41,7 +40,7 @@
       ZVM_VI_EDITOR = "nvim";
       ZVM_INIT_MODE = "sourcing";
 
-      NIXOS_CONFIG = "${config.xdg.configHome}/ice";
+      NIXOS_CONFIG = "${config.xdg.configHome}/nix";
     };
 
     syntaxHighlighting.styles = {
@@ -61,8 +60,6 @@
       function zvm_after_init() {
           bindkey '^r' fzf-history-widget
       }
-
-      bindkey '^o' autosuggest-accept
 
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color always --icon always $realpath'
       zstyle ':fzf-tab:*' switch-group '<' '>'

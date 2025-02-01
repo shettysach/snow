@@ -14,7 +14,7 @@
 
     # -- Dev --
 
-    ghostty
+    alacritty
 
     neovim
     helix
@@ -27,7 +27,10 @@
     # -- TUI / CLI utils --
 
     fastfetch
+
     btop
+    nvtopPackages.nvidia
+
     dua
 
     zoxide
@@ -61,11 +64,11 @@
     zathura
 
     fractal
-    discord
 
     # Misc
 
     inputs.cohle.packages."${pkgs.system}".default
+
   ];
 
   fonts.packages = with pkgs; [

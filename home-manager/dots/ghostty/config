@@ -1,12 +1,14 @@
 theme = tokyonight
 background = #16161E
-background-opacity = 0.875
+background-opacity = 0.85
 
 shell-integration = zsh
 resize-overlay = never
 
+window-padding-x = 0
+window-padding-y = 0
+
 font-size = 14
-font-thicken = true
 cursor-invert-fg-bg = true
 
 window-decoration = false
@@ -15,6 +17,9 @@ keybind = super+d=toggle_window_decorations
 confirm-close-surface = false
 
 keybind = super+r=reload_config
+
+keybind = super+enter=new_split:auto
+keybind = super+backspace=close_surface
 
 keybind = super+h=goto_split:left
 keybind = super+j=goto_split:bottom

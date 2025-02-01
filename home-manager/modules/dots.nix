@@ -9,10 +9,17 @@
   programs = {
     bat.enable = true;
     waybar.enable = true;
+
     rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
     };
+  };
+
+  programs.alacritty = {
+    enable = true;
+    settings.window.dynamic_padding = true;
+    # settings = lib.importTOML ../dots/alacritty/alacritty.toml;
   };
 
   programs.helix = {

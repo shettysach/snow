@@ -1,19 +1,19 @@
 format = """
 [░▒▓](black)\
 $username\
-[](bg:blue fg:black)\
+[](bg:blue fg:black)\
 $directory\
-[](fg:blue bg:#394260)\
+[](fg:blue bg:#394260)\
 $git_branch\
 $git_status\
-[](fg:#394260 bg:#2b3248)\
+[](fg:#394260 bg:#2b3248)\
 $rust\
 $python\
 $c\
-[](fg:#2b3248 bg:#1d2230)\
+[](fg:#2b3248 bg:#1d2230)\
 $shell\
 $nix_shell\
-[](fg:#1d2230)\
+[](fg:#1d2230)\
 \n$character"""
 
 # add_newline = false

@@ -1,9 +1,24 @@
 { pkgs, ... }:
 
 {
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  nix.settings = {
+    substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   imports = [
     ./hardware-configuration.nix
     ./packages.nix
+    ./nvidia.nix
     ./modules/mod.nix
   ];
 
@@ -25,6 +40,7 @@
   };
 
   security.polkit.enable = true;
+  security.rtkit.enable = true;
 
   services.xserver.xkb = {
     layout = "us";
@@ -34,8 +50,6 @@
   services.printing.enable = true;
 
   services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -62,11 +76,6 @@
   };
 
   environment.variables.EDITOR = "nvim";
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 
   system.stateVersion = "24.05";
 }

@@ -4,7 +4,6 @@ let
   cfg = config.wayland.windowManager.sway.config;
   scripts = "${config.xdg.configHome}/scripts";
 in
-
 {
   wayland.windowManager.sway = {
     enable = true;
@@ -17,11 +16,11 @@ in
       ];
 
       modifier = "Mod1";
-      terminal = "ghostty";
+      terminal = "alacritty";
       menu = "rofi -show drun";
 
       gaps = {
-        inner = 5;
+        inner = 4;
         outer = 2;
       };
 
@@ -134,10 +133,10 @@ in
       variables = [
         "DISPLAY"
         "WAYLAND_DISPLAY"
+        "NIXOS_OZONE_WL"
         "SWAYSOCK"
         "XDG_CURRENT_DESKTOP"
         "XDG_SESSION_TYPE"
-        "NIXOS_OZONE_WL"
         "XCURSOR_THEME"
         "XCURSOR_SIZE"
         #"-all"
@@ -154,15 +153,6 @@ in
       indicator-thickness = 5;
       font-size = 45;
     };
-  };
-
-  services.mako = {
-    enable = true;
-    icons = true;
-    actions = true;
-    layer = "overlay";
-
-    defaultTimeout = 6000;
   };
 
   services.swayidle = {

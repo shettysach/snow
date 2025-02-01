@@ -30,8 +30,6 @@
     "custom/separator",
     "pulseaudio",
     "custom/separator",
-    "bluetooth",
-    "custom/separator",
     "network",
     "custom/separator",
     "battery",
@@ -115,13 +113,6 @@
     "format-icons": ["󰃜", "󰃛", "󰃚"],
     //"on-scroll-up": "brightnessctl set +5%",
     //"on-scroll-down": "brightnessctl set 5%-"
-  },
-  "bluetooth": {
-    "format-connected": "󰂰",
-    "format-on": "󰂱",
-    "format-off": "󰂲",
-    "format-disabled": "󰂲",
-    "on-click": "bash $HOME/.config/scripts/bluetooth_menu"
   },
   "pulseaudio": {
     "format": "{icon} {volume}% {format_source}",
