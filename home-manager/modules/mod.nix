@@ -5,6 +5,7 @@
     ./stylix.nix
 
     ./sway.nix
+    ./i3.nix
 
     ./dunst.nix
 

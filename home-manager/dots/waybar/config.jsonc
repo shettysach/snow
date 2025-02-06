@@ -1,5 +1,4 @@
 {
-  // Basics
   "layer": "top",
   "position": "top",
   "margin-top": 0,
@@ -10,32 +9,34 @@
   // Modules
   "modules-left": [
     "clock",
-    "custom/separator",
+    "custom/right_separator",
     "cpu",
     // "temperature",
-    "custom/separator",
+    "custom/right_separator",
+    "custom/gpu",
+    "custom/right_separator",
     "memory",
-    "custom/separator",
-    "disk#one"
-    // "custom/separator",
-    // "custom/music"
+    "custom/right_separator",
+    "disk#one",
+    "custom/right_separator"
   ],
   "modules-center": ["sway/workspaces", "sway/mode", "sway/window"],
   "modules-right": [
+    "custom/left_separator",
     "tray",
-    "custom/separator",
+    "custom/left_separator",
     "idle_inhibitor",
-    "custom/separator",
+    "custom/left_separator",
     "backlight",
-    "custom/separator",
+    "custom/left_separator",
     "pulseaudio",
-    "custom/separator",
+    "custom/left_separator",
     "network",
-    "custom/separator",
+    "custom/left_separator",
     "battery",
-    "custom/separator",
+    "custom/left_separator",
     "custom/powermenu",
-    "custom/separator"
+    "custom/left_separator"
   ],
 
   "clock": {
@@ -49,7 +50,8 @@
       "critical": 90
     },
     "interval": 1,
-    "format": "  {usage:2}%"
+    "format": "CPU {usage}%"
+    //"format": "  {usage:2}%"
   },
   // "temperature": {
   //  "thermal-zone": 3,
@@ -59,6 +61,12 @@
   //  "format-critical": "({temperatureC}°C)",
   //  "format": "({temperatureC}°C)"
   // },
+
+  "custom/gpu": {
+    //"format": "󰜨 {:2}%",
+    "format": "GPU {}",
+    "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader | tr -d ' '"
+  },
   "memory": {
     "states": {
       "good": 0,
@@ -66,7 +74,8 @@
       "critical": 85
     },
     "interval": 5,
-    "format": "  {:2}%"
+    "format": "MEM {}%"
+    //"format": "  {:2}%"
   },
   "disk#one": {
     "states": {
@@ -75,7 +84,8 @@
       "critical": 95
     },
     "interval": 10,
-    "format": "󰉉  {percentage_used:2}%",
+    "format": "STG {percentage_used}%",
+    //"format": "󰉉  {percentage_used:2}%",
     "path": "/"
   },
   //"custom/music": {
@@ -158,8 +168,13 @@
     "interval": 5,
     "format-icons": [" ", " ", " ", " ", " "]
   },
-  "custom/separator": {
-    "format": "  ",
+  "custom/right_separator": {
+    "format": " ",
+    "tooltip": false
+  },
+
+  "custom/left_separator": {
+    "format": " ",
     "tooltip": false
   },
   "custom/powermenu": {

@@ -1,8 +1,10 @@
 { config, pkgs, ... }:
 
 let
-  cfg = config.wayland.windowManager.sway.config;
+  cfg = config.xsession.windowManager.i3.config;
   scripts = "${config.xdg.configHome}/scripts";
+  dpi = "192";
+  alacritty-font-size = "9.5";
 
   transparent = "#00000000";
   inherit (config.lib.stylix.colors.withHashtag)
@@ -12,32 +14,33 @@ let
     base08
     base0C
     ;
-
 in
 {
-  wayland.windowManager.sway = {
+  xsession.windowManager.i3 = {
     enable = true;
+    package = pkgs.i3-gaps;
 
     config = {
       startup = [
-        { command = "${pkgs.autotiling-rs}/bin/autotiling-rs"; }
-        { command = "${pkgs.clipse}/bin/clipse -listen"; }
-        { command = "${scripts}/battery.sh"; }
+        { command = "exec ${pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource modesetting NVIDIA-0"; }
+        { command = "exec ${pkgs.xorg.xrandr}/bin/xrandr --auto"; }
+        { command = "exec ${pkgs.feh}/bin/feh --bg-fill ${config.stylix.image}"; }
+        { command = "exec ${pkgs.picom-next}/bin/picom -b --backend egl"; }
+        {
+          command = "${pkgs.autotiling}/bin/autotiling";
+          always = true;
+        }
+        {
+          command = "${scripts}/battery.sh";
+          always = true;
+        }
       ];
-
-      modifier = "Mod1";
-      terminal = "${pkgs.alacritty}/bin/alacritty";
-      menu = "${pkgs.rofi-wayland}/bin/rofi -show drun";
-
-      gaps = {
-        inner = 4;
-        outer = 2;
-      };
 
       bars = [
         {
           position = "top";
           statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${config.xdg.configHome}/i3status-rs/config.toml";
+          command = "i3bar -t";
           fonts = {
             names = [ "JetBrains Mono Nerd Font" ];
             size = 13.0;
@@ -75,6 +78,15 @@ in
         }
       ];
 
+      modifier = "Mod1";
+      terminal = "${pkgs.alacritty}/bin/alacritty --option='font.size=${alacritty-font-size}'";
+      menu = "${pkgs.rofi-wayland}/bin/rofi -show drun -dpi ${dpi}";
+
+      gaps = {
+        inner = 4;
+        outer = 2;
+      };
+
       defaultWorkspace = "workspace number 1";
 
       window = {
@@ -84,26 +96,27 @@ in
 
       keybindings = {
         "${cfg.modifier}+Return" = "exec ${cfg.terminal}";
-        "${cfg.modifier}+Backspace" = "kill";
+        "${cfg.modifier}+BackSpace" = "kill";
         "${cfg.modifier}+d" = "exec ${cfg.menu}";
 
-        "${cfg.modifier}+Shift+c" = "reload";
+        "${cfg.modifier}+Shift+c" = "exec i3-msg reload";
         "${cfg.modifier}+r" = "mode resize";
+        "${cfg.modifier}+Shift+w" = "exec ${pkgs.polybar}/bin/polybar";
 
-        "${cfg.modifier}+${cfg.left}" = "focus left";
-        "${cfg.modifier}+${cfg.down}" = "focus down";
-        "${cfg.modifier}+${cfg.up}" = "focus up";
-        "${cfg.modifier}+${cfg.right}" = "focus right";
+        "${cfg.modifier}+h" = "focus left";
+        "${cfg.modifier}+j" = "focus down";
+        "${cfg.modifier}+k" = "focus up";
+        "${cfg.modifier}+l" = "focus right";
 
         "${cfg.modifier}+Left" = "focus left";
         "${cfg.modifier}+Down" = "focus down";
         "${cfg.modifier}+Up" = "focus up";
         "${cfg.modifier}+Right" = "focus right";
 
-        "${cfg.modifier}+Shift+${cfg.left}" = "move left";
-        "${cfg.modifier}+Shift+${cfg.down}" = "move down";
-        "${cfg.modifier}+Shift+${cfg.up}" = "move up";
-        "${cfg.modifier}+Shift+${cfg.right}" = "move right";
+        "${cfg.modifier}+Shift+h" = "move left";
+        "${cfg.modifier}+Shift+j" = "move down";
+        "${cfg.modifier}+Shift+k" = "move up";
+        "${cfg.modifier}+Shift+l" = "move right";
 
         "${cfg.modifier}+Shift+Left" = "move left";
         "${cfg.modifier}+Shift+Down" = "move down";
@@ -164,71 +177,12 @@ in
         "XF86AudioPrev" = "exec 'playerctl prev'";
       };
     };
-
-    extraConfig = ''
-      bindgesture swipe:right workspace prev
-      bindgesture swipe:left workspace next
-    '';
-
-    systemd = {
-      enable = true;
-      extraCommands = [
-        "systemctl --user start sway-session.target"
-      ];
-      variables = [
-        "DISPLAY"
-        "WAYLAND_DISPLAY"
-        "NIXOS_OZONE_WL"
-        "SWAYSOCK"
-        "XDG_CURRENT_DESKTOP"
-        "XDG_SESSION_TYPE"
-        "XCURSOR_THEME"
-        "XCURSOR_SIZE"
-        #"-all"
-      ];
-      xdgAutostart = false;
-    };
   };
 
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      daemonize = true;
-      indicator-radius = 125;
-      indicator-thickness = 5;
-      font-size = 45;
-    };
-  };
+  # services.polybar = {
+  #   enable = true;
+  #   script = "exec ${pkgs.polybar}/bin/polybar main &";
+  # };
 
-  services.swayidle = {
-    enable = true;
-    events = [
-      {
-        event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock";
-      }
-
-      {
-        event = "lock";
-        command = "${pkgs.swaylock}/bin/swaylock";
-      }
-    ];
-    timeouts = [
-      {
-        timeout = 5 * 60;
-        command = "${pkgs.swaylock}/bin/swaylock";
-      }
-
-      {
-        timeout = 10 * 60;
-        command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
-        resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
-      }
-
-      {
-        timeout = 15 * 60;
-        command = "${pkgs.systemd}/bin/systemctl suspend";
-      }
-    ];
-  };
+  programs.feh.enable = true;
 }

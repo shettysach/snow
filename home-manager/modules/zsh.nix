@@ -4,8 +4,15 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+
+    autosuggestion = {
+      enable = true;
+      strategy = [
+        "history"
+        "completion"
+      ];
+    };
 
     historySubstringSearch = {
       enable = true;
@@ -60,6 +67,8 @@
       function zvm_after_init() {
           bindkey '^r' fzf-history-widget
       }
+
+      bindkey '^o' autosuggest-accept
 
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color always --icon always $realpath'
       zstyle ':fzf-tab:*' switch-group '<' '>'

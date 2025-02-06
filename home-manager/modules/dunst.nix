@@ -18,12 +18,13 @@ in
   services.dunst = {
     enable = true;
 
-    settings = {
-      iconTheme = {
-        package = pkgs.kdePackages.breeze-icons;
-        name = "breeze-dark";
-      };
+    iconTheme = {
+      package = pkgs.kdePackages.breeze-icons;
+      name = "breeze-dark";
+      size = "32x32";
+    };
 
+    settings = {
       global = {
         separator_height = 1;
         frame_width = 1;

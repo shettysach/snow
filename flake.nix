@@ -18,6 +18,8 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    nixCats.url = "github:BirdeeHub/nixCats-nvim";
+
     # -- rust --
 
     crane.url = "github:ipetkov/crane";

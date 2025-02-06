@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  pkgs-stable,
+  ...
+}:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -40,6 +45,8 @@
     bat
     fzf
     fd
+
+    killall
 
     mpv
     imv

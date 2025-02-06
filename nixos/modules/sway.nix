@@ -9,7 +9,7 @@
       wl-clipboard
       clipse
 
-      waybar
+      i3blocks
       rofi-wayland
       autotiling-rs
 

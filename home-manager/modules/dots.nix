@@ -9,10 +9,10 @@
   programs = {
     bat.enable = true;
     waybar.enable = true;
+    # polybar.enable = true;
 
     rofi = {
       enable = true;
-      package = pkgs.rofi-wayland;
     };
   };
 

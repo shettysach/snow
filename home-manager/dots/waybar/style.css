@@ -9,6 +9,12 @@ window#waybar {
   margin: 0;
 }
 
+window#waybar,
+window#waybar.floating,
+window#waybar.empty {
+  background: none;
+}
+
 #workspaces button {
   padding: 5px 5px;
 }
@@ -37,11 +43,12 @@ window#waybar {
 #pulseaudio,
 #cpu,
 #memory,
+#storage,
+#custom-gpu,
 #clock,
 #battery,
 #backlight,
 #disk,
-#custom-separator,
 #custom-powermenu,
 #network,
 #taskbar {
@@ -71,10 +78,12 @@ padding: 3px 10px 0 0;
   color: inherit;
 } */
 
-#custom-separator {
-  opacity: 0;
-  padding: 0;
-}
+/*#custom-right_separator,*/
+/*#custom-left_separator*/
+/*{*/
+/*  color: #7AA2F7;*/
+/*  padding: 0;*/
+/*}*/
 
 #battery.warning,
 #cpu.warning,
@@ -97,9 +106,4 @@ padding: 3px 10px 0 0;
 }
 
 tooltip {
-}
-
-window#waybar.floating,
-window#waybar.empty {
-  background: none;
 }

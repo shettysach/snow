@@ -40,7 +40,7 @@
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Original-Classic";
-      size = 22;
+      size = 23;
     };
 
     opacity = {
