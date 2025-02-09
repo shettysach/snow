@@ -8,11 +8,10 @@
 {
   programs = {
     bat.enable = true;
-    waybar.enable = true;
-    # polybar.enable = true;
 
     rofi = {
       enable = true;
+      package = pkgs.rofi-wayland;
     };
   };
 
@@ -56,8 +55,7 @@
   };
 
   home.file = {
-    # "${config.xdg.configHome}/ghostty".source = ../dots/ghostty;
-    "${config.xdg.configHome}/waybar".source = ../dots/waybar;
+    "${config.xdg.configHome}/i3status-rust".source = ../dots/i3status-rust;
     "${config.xdg.configHome}/rofi".source = ../dots/rofi;
     "${config.xdg.configHome}/scripts" = {
       source = ../dots/scripts;

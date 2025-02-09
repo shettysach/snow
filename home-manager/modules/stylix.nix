@@ -5,7 +5,7 @@
     enable = true;
     autoEnable = true;
 
-    image = ../wallpapers/aurora_ice.jpg;
+    image = ../wallpapers/aurora_lake.jpg;
     base16Scheme = ../../tokyonight.yaml;
 
     targets = {
@@ -44,7 +44,7 @@
     };
 
     opacity = {
-      terminal = 0.8;
+      terminal = 0.85;
     };
 
     iconTheme = {

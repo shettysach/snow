@@ -5,6 +5,7 @@
 <div align="center">
   Lord Commander Snow, by <a href="https://www.artstation.com/artwork/b5zB8m">Luis Fernando</a>
 </div>
+<br>
 
 ```
 .
@@ -18,7 +19,6 @@
 │   │   ├── stylix.nix
 │   │   ├── network.nix
 │   │   ├── mod.nix
-│   │   ├── lightdm.nix
 │   │   ├── i3.nix
 │   │   ├── greetd.nix
 │   │   └── bluetooth.nix
@@ -27,8 +27,7 @@
 ├── home-manager
 │   ├── wallpapers
 │   │   ├── aurora_lake.jpg
-│   │   ├── aurora_ice.jpg
-│   │   └── amethyst.png
+│   │   └── aurora_ice.jpg
 │   ├── modules
 │   │   ├── zsh.nix
 │   │   ├── sway.nix
@@ -40,9 +39,6 @@
 │   │   └── dots.nix
 │   ├── home.nix
 │   └── dots
-│       ├── waybar
-│       │   ├── style.css
-│       │   └── config.jsonc
 │       ├── starship
 │       │   └── starship.toml
 │       ├── scripts
@@ -51,6 +47,8 @@
 │       │   └── battery.sh
 │       ├── rofi
 │       │   └── config.rasi
+│       ├── i3status-rust
+│       │   └── config.toml
 │       ├── helix
 │       │   ├── languages.toml
 │       │   └── config.toml

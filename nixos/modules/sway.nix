@@ -7,6 +7,7 @@
 
     extraPackages = with pkgs; [
       wl-clipboard
+      wlr-randr
       clipse
 
       i3blocks
@@ -22,11 +23,6 @@
       grim
       slurp
       grimblast
-
-      xfce.thunar
-      xfce.thunar-volman
-      xfce.thunar-archive-plugin
-      xfce.thunar-media-tags-plugin
     ];
   };
 

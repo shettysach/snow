@@ -6,6 +6,7 @@ configuration {
   modi: "window,run,drun";
   show-icons: true;
   terminal: "alacritty";
+  dpi: 0;
 }
 
 @theme "custom"
@@ -13,16 +14,16 @@ configuration {
 * {
   opacity: 0.5;
   border: 0;
-  padding: 2 2 2 2;
+  padding: 0.15em 0.15em 0.15em 0.15em;
   spacing: 0;
 }
 
 window {
-  width: 32%;
+  width: 30%;
 }
 
 element {
-  padding: 10 12;
+  padding: 0.5em 0.5em;
 }
 
 element-text {
@@ -30,12 +31,12 @@ element-text {
 }
 
 element-icon {
-  size: 20;
-  padding: 0 12 0 0;
+  size: 1.2em;
+  padding: 0 0.5em 0 0;
 }
 
 entry {
-  padding: 12;
+  padding: 0.6em;
 }
 
 inputbar {
@@ -53,7 +54,7 @@ mainbox {
 
 prompt {
   enabled: true;
-  padding: 12 0 0 12;
+  padding: 0.5em 0 0 0.5em;
 }
 
 element selected.active,
@@ -61,4 +62,4 @@ element selected.normal {
   background-color: @blue;
 }
 
-/* vim: ft=sass
+/* vim: ft=sass */

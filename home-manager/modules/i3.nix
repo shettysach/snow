@@ -1,14 +1,15 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.xsession.windowManager.i3.config;
   scripts = "${config.xdg.configHome}/scripts";
-  dpi = "192";
-  alacritty-font-size = "9.5";
 
   transparent = "#00000000";
   inherit (config.lib.stylix.colors.withHashtag)
-    base00
     base04
     base05
     base08
@@ -22,24 +23,21 @@ in
 
     config = {
       startup = [
-        { command = "exec ${pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource modesetting NVIDIA-0"; }
-        { command = "exec ${pkgs.xorg.xrandr}/bin/xrandr --auto"; }
         { command = "exec ${pkgs.feh}/bin/feh --bg-fill ${config.stylix.image}"; }
         { command = "exec ${pkgs.picom-next}/bin/picom -b --backend egl"; }
         {
           command = "${pkgs.autotiling}/bin/autotiling";
           always = true;
         }
-        {
-          command = "${scripts}/battery.sh";
-          always = true;
-        }
+        { command = "${scripts}/battery.sh"; }
       ];
 
       bars = [
         {
           position = "top";
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${config.xdg.configHome}/i3status-rs/config.toml";
+          statusCommand = ''
+            ${pkgs.i3status-rust}/bin/i3status-rs \
+            ${config.xdg.configHome}/i3status-rust/config.toml'';
           command = "i3bar -t";
           fonts = {
             names = [ "JetBrains Mono Nerd Font" ];
@@ -64,9 +62,9 @@ in
             };
 
             urgentWorkspace = {
-              background = base08;
-              border = base08;
-              text = base00;
+              background = "${base08}33";
+              border = transparent;
+              text = base08;
             };
 
             inactiveWorkspace = {
@@ -79,8 +77,8 @@ in
       ];
 
       modifier = "Mod1";
-      terminal = "${pkgs.alacritty}/bin/alacritty --option='font.size=${alacritty-font-size}'";
-      menu = "${pkgs.rofi-wayland}/bin/rofi -show drun -dpi ${dpi}";
+      terminal = "${pkgs.alacritty}/bin/alacritty";
+      menu = "${pkgs.rofi}/bin/rofi -show drun";
 
       gaps = {
         inner = 4;
@@ -101,7 +99,6 @@ in
 
         "${cfg.modifier}+Shift+c" = "exec i3-msg reload";
         "${cfg.modifier}+r" = "mode resize";
-        "${cfg.modifier}+Shift+w" = "exec ${pkgs.polybar}/bin/polybar";
 
         "${cfg.modifier}+h" = "focus left";
         "${cfg.modifier}+j" = "focus down";
@@ -178,11 +175,6 @@ in
       };
     };
   };
-
-  # services.polybar = {
-  #   enable = true;
-  #   script = "exec ${pkgs.polybar}/bin/polybar main &";
-  # };
 
   programs.feh.enable = true;
 }

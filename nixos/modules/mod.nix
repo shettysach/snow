@@ -2,13 +2,11 @@
   imports = [
     ./bluetooth.nix
     ./network.nix
-
     ./stylix.nix
 
-    ./i3.nix
     ./sway.nix
+    # ./i3.nix
 
     ./greetd.nix
-    # ./lightdm.nix
   ];
 }

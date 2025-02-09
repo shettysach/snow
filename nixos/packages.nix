@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  pkgs-stable,
   ...
 }:
 
@@ -64,6 +63,11 @@
     pavucontrol
 
     # -- GUI --
+
+    xfce.thunar
+    xfce.thunar-volman
+    xfce.thunar-archive-plugin
+    xfce.thunar-media-tags-plugin
 
     brave
     librewolf-wayland

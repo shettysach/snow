@@ -6,7 +6,6 @@ let
 
   transparent = "#00000000";
   inherit (config.lib.stylix.colors.withHashtag)
-    base00
     base04
     base05
     base08
@@ -20,7 +19,10 @@ in
 
     config = {
       startup = [
-        { command = "${pkgs.autotiling-rs}/bin/autotiling-rs"; }
+        {
+          command = "${pkgs.autotiling-rs}/bin/autotiling-rs";
+          always = true;
+        }
         { command = "${pkgs.clipse}/bin/clipse -listen"; }
         { command = "${scripts}/battery.sh"; }
       ];
@@ -37,7 +39,9 @@ in
       bars = [
         {
           position = "top";
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${config.xdg.configHome}/i3status-rs/config.toml";
+          statusCommand = ''
+            ${pkgs.i3status-rust}/bin/i3status-rs \
+            ${config.xdg.configHome}/i3status-rust/config.toml'';
           fonts = {
             names = [ "JetBrains Mono Nerd Font" ];
             size = 13.0;
@@ -61,9 +65,9 @@ in
             };
 
             urgentWorkspace = {
-              background = base08;
-              border = base08;
-              text = base00;
+              background = "${base08}33";
+              border = transparent;
+              text = base08;
             };
 
             inactiveWorkspace = {
