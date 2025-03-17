@@ -13,9 +13,9 @@ scope = "source.rust"
 injection-regex = "rust"
 file-types = ["rs"]
 roots = ["Cargo.toml", "Cargo.lock"]
-auto-format = true
 language-servers = [ "rust-analyzer" ]
 indent = { tab-width = 4, unit = "    " }
+auto-format = true
 
 [language-server.rust-analyzer]
 command = "rust-analyzer"
@@ -31,6 +31,24 @@ closureReturnTypeHints.enable = "with_block"
 discriminantHints.enable = "fieldless"
 lifetimeElisionHints.enable = "skip_trivial"
 typeHints.hideClosureInitialization = false
+
+# HASKELL
+
+[[language]]
+name = "haskell"
+scope = "source.haskell"
+injection-regex = "hs|haskell"
+file-types = ["hs", "hs-boot", "hsc"]
+roots = ["Setup.hs", "stack.yaml", "cabal.project"]
+comment-token = "--"
+block-comment-tokens = { start = "{-", end = "-}" }
+language-servers = [ "haskell-language-server" ]
+indent = { tab-width = 2, unit = "  " }
+auto-format = true
+
+[language-server.haskell-language-server.config]
+haskell.formattingProvider = "stylish-haskell"
+haskell.plugin.rename.config.crossModule = true
 
 # PYTHON
 

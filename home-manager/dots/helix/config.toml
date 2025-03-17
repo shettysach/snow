@@ -10,6 +10,7 @@ completion-trigger-len = 1
 completion-replace = true
 completion-timeout = 100
 end-of-line-diagnostics = "hint"
+auto-format = true
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
@@ -27,11 +28,6 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
-[editor.statusline]
-mode.normal = "NOR"
-mode.select = "VIS"
-mode.insert = "INS"
-
 [keys.normal]
 esc = ["collapse_selection", "keep_primary_selection"]
 tab = ":buffer-next"
@@ -39,3 +35,4 @@ tab = ":buffer-next"
 
 [keys.normal.space]
 i = ":toggle-option lsp.display-inlay-hints"
+v = ":sh alacritty"

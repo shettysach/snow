@@ -10,7 +10,6 @@
       wlr-randr
       clipse
 
-      i3blocks
       rofi-wayland
       autotiling-rs
 

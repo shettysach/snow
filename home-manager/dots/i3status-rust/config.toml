@@ -1,14 +1,15 @@
 [theme]
 theme = "native"
+
 [theme.overrides]
 
+good_fg = "#7DCFFF"
 info_fg = "#7AA2F7"
-good_fg = "#73DACA"
 warning_fg = "#E0AF68"
 critical_fg = "#F7768E"
 
+good_bg = "#7DCFFF33"
 info_bg = "#7AA2F733"
-good_bg = "#73DACA33"
 warning_bg = "#E0AF6833"
 critical_bg = "#F7768E33"
 
@@ -43,9 +44,13 @@ else
     state="critical"
 fi
 
-echo "{\"state\": \"$state\", \"text\": \"GPU ${gpu_util}%\"}"
+gpu_text=$(printf "%2d" "$gpu_util")
+
+echo "{\"state\": \"$state\", \"text\": \"GPU ${gpu_text}%\"}"
 '''
 json = true
+shell = "bash"
+format = " $text.pango-str() "
 
 [[block]]
 block = "memory"
@@ -64,7 +69,7 @@ format = " $icon $percentage.eng(w:2) "
 [[block]]
 block = "net"
 format = " $icon $speed_down.eng(prefix:K) $speed_up.eng(prefix:K) "
-inactive_format = " $icon " 
+inactive_format = "<span foreground='#F7767E' background='#F7768E33'> DISCONNECTED </span>"
 
 [[block]]
 block = "backlight"
@@ -98,5 +103,5 @@ critical = 15
 
 [[block]]
 block = "time"
-interval = 5
-format = " $timestamp.datetime(f:'DATE %d-%m-%y  TIME %R') "
+interval = 60
+format = " $icon $timestamp.datetime(f:'%R %d/%m/%y') "

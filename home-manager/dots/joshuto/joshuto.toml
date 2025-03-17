@@ -1,0 +1,7 @@
+[display]
+column_ratio = [1, 2, 3]
+line_number_style = "relative"
+show_icons = true
+
+[preview]
+preview_script = "~/.config/scripts/preview.sh"

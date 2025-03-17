@@ -7,6 +7,7 @@
 let
   cfg = config.xsession.windowManager.i3.config;
   scripts = "${config.xdg.configHome}/scripts";
+  alt_terminal = "${pkgs.ghostty}/bin/ghostty";
 
   transparent = "#00000000";
   inherit (config.lib.stylix.colors.withHashtag)
@@ -82,7 +83,7 @@ in
 
       gaps = {
         inner = 4;
-        outer = 2;
+        outer = 1;
       };
 
       defaultWorkspace = "workspace number 1";
@@ -94,6 +95,7 @@ in
 
       keybindings = {
         "${cfg.modifier}+Return" = "exec ${cfg.terminal}";
+        "${cfg.modifier}+Shift+Return" = "exec ${alt_terminal}";
         "${cfg.modifier}+BackSpace" = "kill";
         "${cfg.modifier}+d" = "exec ${cfg.menu}";
 

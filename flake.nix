@@ -20,16 +20,20 @@
 
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
 
-    # -- rust --
+    # Rust
 
     crane.url = "github:ipetkov/crane";
-
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # -- uv python --
+    # Zig
+
+    zig-ovelay.url = "github:mitchellh/zig-overlay";
+    zls-overlay.url = "github:zigtools/zls/0.13.0";
+
+    # Py
 
     pyproject-nix = {
       url = "github:pyproject-nix/pyproject.nix";
@@ -49,7 +53,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # -- misc --
+    # Misc
 
     cohle = {
       url = "github:shettysach/cohle";
@@ -58,7 +62,6 @@
       inputs.rust-overlay.follows = "rust-overlay";
       inputs.flake-utils.follows = "flake-utils";
     };
-
   };
 
   outputs =

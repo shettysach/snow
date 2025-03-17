@@ -59,6 +59,12 @@
     #media-session.enable = true;
   };
 
+  services.gvfs.enable = true;
+  services.udev.packages = [
+    pkgs.android-udev-rules
+    pkgs.libmtp.out
+  ];
+
   programs = {
     light.enable = true;
     zsh.enable = true;

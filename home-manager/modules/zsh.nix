@@ -70,11 +70,13 @@
 
       bindkey '^o' autosuggest-accept
 
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color always --icon always $realpath'
+      zstyle ':fzf-tab:*' use-fzf-default-opts yes
       zstyle ':fzf-tab:*' switch-group '<' '>'
+      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color always --icon always $realpath'
     '';
 
     history.size = 1000;
+    history.saveNoDups = true;
   };
 
 }

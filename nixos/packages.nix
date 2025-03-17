@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  pkgs-stable,
   ...
 }:
 
@@ -19,14 +20,21 @@
     # -- Dev --
 
     alacritty
+    ghostty
+
+    git
+    git-lfs
 
     neovim
     helix
 
+    nix-direnv
+    direnv
+
+    nushell
+
     obsidian
     texliveSmall
-
-    git
 
     # -- TUI / CLI utils --
 
@@ -35,13 +43,19 @@
     btop
     nvtopPackages.nvidia
 
+    file
+    joshuto
     dua
 
     zoxide
     ripgrep
+
     lsd
     eza
+
     bat
+    delta
+
     fzf
     fd
 
@@ -70,7 +84,9 @@
     xfce.thunar-media-tags-plugin
 
     brave
-    librewolf-wayland
+    pkgs-stable.librewolf
+
+    newsflash
 
     zathura
 
@@ -79,7 +95,6 @@
     # Misc
 
     inputs.cohle.packages."${pkgs.system}".default
-
   ];
 
   fonts.packages = with pkgs; [

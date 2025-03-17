@@ -5,14 +5,8 @@
     enable = true;
     autoEnable = true;
 
-    image = ../wallpapers/aurora_lake.jpg;
+    image = ../wallpapers/aurora_ice.jpg;
     base16Scheme = ../../tokyonight.yaml;
-
-    targets = {
-      swaylock.useImage = false;
-      fzf.enable = false;
-      helix.enable = false;
-    };
 
     fonts = {
       serif = {
@@ -40,7 +34,7 @@
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Original-Classic";
-      size = 23;
+      size = 22;
     };
 
     opacity = {

@@ -8,6 +8,7 @@ $git_branch\
 $git_status\
 [](fg:#394260 bg:#2b3248)\
 $rust\
+$haskell\
 $python\
 $c\
 [](fg:#2b3248 bg:#1d2230)\
@@ -16,12 +17,6 @@ $nix_shell\
 \n$character"""
 
 # add_newline = false
-continuation_prompt = "[❯ ](purple)"
-
-[character]
-success_symbol = "[❯](blue)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[](purple)"
 
 [username]
 disabled = false
@@ -37,34 +32,38 @@ format = "[ $path ]($style)"
 # truncation_symbol = "…/"
 
 [git_branch]
-symbol = ""
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:bright-cyan bg:#394260)]($style)'
+symbol = ""
+style = "fg:bright-cyan bg:#394260"
+format = '[ $symbol $branch ]($style)'
 
 [git_status]
 deleted = "x"
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:cyan bg:#394260)]($style)'
+style = "fg:cyan bg:#394260"
+format = '[$all_status$ahead_behind ]($style)'
 
 [python]
 symbol = "󰌠"
-style = "bg:#2b3248"
-format = '[[ $symbol ($version) ](fg:bright-blue bg:#2b3248)]($style)'
+style = "fg:bright-blue bg:#2b3248"
+format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#2b3248"
-format = '[[ $symbol ($version) ](fg:bright-blue bg:#2b3248)]($style)'
+style = "fg:bright-blue bg:#2b3248"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = ""
+style = "fg:bright-blue bg:#2b3248"
+format = '[ $symbol ($version) ]($style)'
 
 [c]
 symbol = ""
-style = "bg:#2b3248"
-format = '[[ $symbol ($version) ](fg:bright-blue bg:#2b3248)]($style)'
+style = "fg:bright-blue bg:#2b3248"
+format = '[ $symbol ($version) ]($style)'
 
 [nix_shell]
 disabled = false
-impure_msg = "[impure](fg:red bg:#1d2230)"
-pure_msg = "[pure](fg:blue bg:#1d2230)"
-unknown_msg = "[unknown](fg:purple bg:#1d2230)"
-symbol = "󱄅"
-format = '[ $symbol $state ($name) ](fg:blue bg:#1d2230)'
+impure_msg = "[ ](fg:purple bg:#1d2230)"
+pure_msg = "[ ](fg:green bg:#1d2230)"
+unknown_msg = "[ ](fg:blue bg:#1d2230)"
+format = '[ $state ($name) ](fg:blue bg:#1d2230)'

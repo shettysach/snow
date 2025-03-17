@@ -1,11 +1,19 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.wayland.windowManager.sway.config;
   scripts = "${config.xdg.configHome}/scripts";
+  alt_terminal = "${pkgs.ghostty}/bin/ghostty";
 
   transparent = "#00000000";
+  inherit (lib) mkForce;
   inherit (config.lib.stylix.colors.withHashtag)
+    base03
     base04
     base05
     base08
@@ -19,10 +27,7 @@ in
 
     config = {
       startup = [
-        {
-          command = "${pkgs.autotiling-rs}/bin/autotiling-rs";
-          always = true;
-        }
+        { command = "${pkgs.autotiling-rs}/bin/autotiling-rs"; }
         { command = "${pkgs.clipse}/bin/clipse -listen"; }
         { command = "${scripts}/battery.sh"; }
       ];
@@ -30,11 +35,6 @@ in
       modifier = "Mod1";
       terminal = "${pkgs.alacritty}/bin/alacritty";
       menu = "${pkgs.rofi-wayland}/bin/rofi -show drun";
-
-      gaps = {
-        inner = 4;
-        outer = 2;
-      };
 
       bars = [
         {
@@ -86,8 +86,17 @@ in
         titlebar = false;
       };
 
+      gaps = {
+        inner = 4;
+        outer = 1;
+      };
+
+      colors.unfocused.indicator = mkForce base03;
+      colors.focusedInactive.indicator = mkForce base03;
+
       keybindings = {
         "${cfg.modifier}+Return" = "exec ${cfg.terminal}";
+        "${cfg.modifier}+Shift+Return" = "exec ${alt_terminal}";
         "${cfg.modifier}+Backspace" = "kill";
         "${cfg.modifier}+d" = "exec ${cfg.menu}";
 
@@ -203,6 +212,7 @@ in
       font-size = 45;
     };
   };
+  stylix.targets.swaylock.useImage = false;
 
   services.swayidle = {
     enable = true;
@@ -229,10 +239,10 @@ in
         resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
       }
 
-      {
-        timeout = 15 * 60;
-        command = "${pkgs.systemd}/bin/systemctl suspend";
-      }
+      # {
+      #   timeout = 15 * 60;
+      #   command = "${pkgs.systemd}/bin/systemctl suspend";
+      # }
     ];
   };
 }

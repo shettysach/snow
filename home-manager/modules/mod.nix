@@ -1,7 +1,8 @@
 {
   imports = [
     ./zsh.nix
-    ./fzf.nix
+    ./direnv.nix
+
     ./stylix.nix
 
     ./sway.nix
