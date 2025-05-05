@@ -70,8 +70,9 @@
 
       bindkey '^o' autosuggest-accept
 
-      zstyle ':fzf-tab:*' use-fzf-default-opts yes
+      zstyle ':completion:*' menu no
       zstyle ':fzf-tab:*' switch-group '<' '>'
+      zstyle ':fzf-tab:*' fzf-flags --color=16 --preview-window=sharp --prompt='❯ '
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color always --icon always $realpath'
     '';
 

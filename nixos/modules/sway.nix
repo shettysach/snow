@@ -6,19 +6,6 @@
     wrapperFeatures.gtk = true;
 
     extraPackages = with pkgs; [
-      wl-clipboard
-      wlr-randr
-      clipse
-
-      rofi-wayland
-      autotiling-rs
-
-      dunst
-      libnotify
-
-      swayidle
-      swaylock
-
       grim
       slurp
       grimblast

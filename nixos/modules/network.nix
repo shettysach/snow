@@ -5,9 +5,9 @@
 
     firewall = {
       enable = true;
-      # allowedTCPPorts = [ 80 ];
     };
   };
 
+  programs.kdeconnect.enable = true;
   programs.nm-applet.enable = true;
 }

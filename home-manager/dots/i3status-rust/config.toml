@@ -69,7 +69,7 @@ format = " $icon $percentage.eng(w:2) "
 [[block]]
 block = "net"
 format = " $icon $speed_down.eng(prefix:K) $speed_up.eng(prefix:K) "
-inactive_format = "<span foreground='#F7767E' background='#F7768E33'> DISCONNECTED </span>"
+inactive_format = "<span foreground='#BB9AF7' background='#BB9AF733'> OFFLINE </span>"
 
 [[block]]
 block = "backlight"

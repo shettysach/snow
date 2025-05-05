@@ -10,58 +10,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-utils.url = "github:numtide/flake-utils";
-
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
 
-    nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    niri.url = "github:sodiboo/niri-flake";
 
-    # Rust
+    cohle.url = "github:shettysach/cohle";
+    cohle.inputs.nixpkgs.follows = "nixpkgs";
 
-    crane.url = "github:ipetkov/crane";
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Zig
-
-    zig-ovelay.url = "github:mitchellh/zig-overlay";
-    zls-overlay.url = "github:zigtools/zls/0.13.0";
-
-    # Py
-
-    pyproject-nix = {
-      url = "github:pyproject-nix/pyproject.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    uv2nix = {
-      url = "github:pyproject-nix/uv2nix";
-      inputs.pyproject-nix.follows = "pyproject-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    pyproject-build-systems = {
-      url = "github:pyproject-nix/build-system-pkgs";
-      inputs.pyproject-nix.follows = "pyproject-nix";
-      inputs.uv2nix.follows = "uv2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Misc
-
-    cohle = {
-      url = "github:shettysach/cohle";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.crane.follows = "crane";
-      inputs.rust-overlay.follows = "rust-overlay";
-      inputs.flake-utils.follows = "flake-utils";
-    };
+    glimpse.url = "github:seatedro/glimpse";
   };
 
   outputs =
@@ -78,6 +38,8 @@
     in
 
     {
+      # nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs system;
@@ -91,6 +53,7 @@
         modules = [
           ./nixos/configuration.nix
           inputs.stylix.nixosModules.stylix
+          inputs.niri.nixosModules.niri
         ];
 
       };
@@ -101,6 +64,8 @@
         modules = [
           ./home-manager/home.nix
           inputs.stylix.homeManagerModules.stylix
+          inputs.niri.homeModules.niri
+          inputs.niri.homeModules.stylix
         ];
       };
     };

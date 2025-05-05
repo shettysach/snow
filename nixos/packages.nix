@@ -24,6 +24,7 @@
 
     git
     git-lfs
+    difftastic
 
     neovim
     helix
@@ -36,7 +37,7 @@
     obsidian
     texliveSmall
 
-    # -- TUI / CLI utils --
+    # TUI / CLI utils
 
     fastfetch
 
@@ -44,6 +45,8 @@
     nvtopPackages.nvidia
 
     file
+    jq
+
     joshuto
     dua
 
@@ -76,7 +79,23 @@
     pulseaudio-ctl
     pavucontrol
 
-    # -- GUI --
+    # windowManager
+
+    wl-clipboard
+    wlr-randr
+    clipse
+
+    rofi-wayland
+    autotiling-rs
+    waybar
+
+    dunst
+    libnotify
+
+    swayidle
+    swaylock
+
+    # GUI
 
     xfce.thunar
     xfce.thunar-volman
@@ -87,14 +106,15 @@
     pkgs-stable.librewolf
 
     newsflash
-
     zathura
-
     fractal
+
+    kdePackages.kdeconnect-kde
 
     # Misc
 
     inputs.cohle.packages."${pkgs.system}".default
+    inputs.glimpse.packages."${pkgs.system}".default
   ];
 
   fonts.packages = with pkgs; [

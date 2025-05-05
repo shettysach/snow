@@ -14,11 +14,11 @@
     sync.enable = true;
 
     # Make sure to use the correct Bus ID values for your system!
-    intelBusId = "0@0:2:0";
-    nvidiaBusId = "1@0:0:0";
+    # intelBusId = "0@0:2:0";
+    # nvidiaBusId = "1@0:0:0";
 
-    # intelBusId = "PCI:0:0:2";
-    # nvidiaBusId = "PCI:1:0:0";
+    intelBusId = "PCI:0:0:2";
+    nvidiaBusId = "PCI:1:0:0";
   };
 
   hardware.nvidia = {

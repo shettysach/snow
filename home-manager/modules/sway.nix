@@ -10,14 +10,14 @@ let
   scripts = "${config.xdg.configHome}/scripts";
   alt_terminal = "${pkgs.ghostty}/bin/ghostty";
 
-  transparent = "#00000000";
+  # transparent = "#00000000";
   inherit (lib) mkForce;
   inherit (config.lib.stylix.colors.withHashtag)
     base03
-    base04
-    base05
-    base08
-    base0C
+    # base04
+    # base05
+    # base08
+    # base0C
     ;
 
 in
@@ -39,45 +39,52 @@ in
       bars = [
         {
           position = "top";
-          statusCommand = ''
-            ${pkgs.i3status-rust}/bin/i3status-rs \
-            ${config.xdg.configHome}/i3status-rust/config.toml'';
-          fonts = {
-            names = [ "JetBrains Mono Nerd Font" ];
-            size = 13.0;
-          };
-
-          colors = {
-            background = transparent;
-            separator = transparent;
-            statusline = base05;
-
-            focusedWorkspace = {
-              background = transparent;
-              border = transparent;
-              text = base0C;
-            };
-
-            activeWorkspace = {
-              background = transparent;
-              border = transparent;
-              text = base05;
-            };
-
-            urgentWorkspace = {
-              background = "${base08}33";
-              border = transparent;
-              text = base08;
-            };
-
-            inactiveWorkspace = {
-              background = transparent;
-              border = transparent;
-              text = base04;
-            };
-          };
+          command = "waybar";
         }
       ];
+
+      # bars = [
+      #   {
+      #     position = "top";
+      #     statusCommand = ''
+      #       ${pkgs.i3status-rust}/bin/i3status-rs \
+      #       ${config.xdg.configHome}/i3status-rust/config.toml'';
+      #     fonts = {
+      #       names = [ "JetBrains Mono Nerd Font" ];
+      #       size = 13.0;
+      #     };
+      #
+      #     colors = {
+      #       background = transparent;
+      #       separator = transparent;
+      #       statusline = base05;
+      #
+      #       focusedWorkspace = {
+      #         background = transparent;
+      #         border = transparent;
+      #         text = base0C;
+      #       };
+      #
+      #       activeWorkspace = {
+      #         background = transparent;
+      #         border = transparent;
+      #         text = base05;
+      #       };
+      #
+      #       urgentWorkspace = {
+      #         background = "${base08}33";
+      #         border = transparent;
+      #         text = base08;
+      #       };
+      #
+      #       inactiveWorkspace = {
+      #         background = transparent;
+      #         border = transparent;
+      #         text = base04;
+      #       };
+      #     };
+      #   }
+      # ];
 
       defaultWorkspace = "workspace number 1";
 
@@ -102,6 +109,7 @@ in
 
         "${cfg.modifier}+Shift+c" = "reload";
         "${cfg.modifier}+r" = "mode resize";
+        "${cfg.modifier}+Shift+S" = ''exec grim -g "$(slurp -d)" - | wl-copy'';
 
         "${cfg.modifier}+${cfg.left}" = "focus left";
         "${cfg.modifier}+${cfg.down}" = "focus down";

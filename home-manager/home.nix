@@ -13,5 +13,8 @@
     packages = with pkgs; [ starship ];
   };
 
-  services.blueman-applet.enable = false;
+  services.blueman-applet.enable = true;
+
+  # services.kdeconnect.enable = true;
+  # services.kdeconnect.indicator = true;
 }

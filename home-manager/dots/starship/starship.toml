@@ -1,19 +1,19 @@
 format = """
 [░▒▓](black)\
 $username\
-[](bg:blue fg:black)\
+[](bg:blue fg:black)\
 $directory\
-[](fg:blue bg:#394260)\
+[](fg:blue bg:#394260)\
 $git_branch\
 $git_status\
-[](fg:#394260 bg:#2b3248)\
+[](fg:#394260 bg:#2b3248)\
 $rust\
 $haskell\
 $python\
 $c\
-[](fg:#2b3248 bg:#1d2230)\
+[](fg:#2b3248 bg:#1d2230)\
 $nix_shell\
-[](fg:#1d2230)\
+[](fg:#1d2230)\
 \n$character"""
 
 # add_newline = false
@@ -63,7 +63,7 @@ format = '[ $symbol ($version) ]($style)'
 
 [nix_shell]
 disabled = false
-impure_msg = "[ ](fg:purple bg:#1d2230)"
-pure_msg = "[ ](fg:green bg:#1d2230)"
-unknown_msg = "[ ](fg:blue bg:#1d2230)"
+impure_msg = "[](fg:purple bg:#1d2230)"
+pure_msg = "[](fg:green bg:#1d2230)"
+unknown_msg = "[](fg:blue bg:#1d2230)"
 format = '[ $state ($name) ](fg:blue bg:#1d2230)'

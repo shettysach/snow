@@ -22,7 +22,7 @@ $env.config = {
         }
         style: {
             text: white                   
-            selected_text: green_reverse
+            selected_text: cyan_reverse
             description_text: blue
         }
       }
@@ -37,7 +37,7 @@ $env.config = {
         }
         style: {
             text: white
-            selected_text: green_reverse
+            selected_text: cyan_reverse
             description_text: blue
         }
       }

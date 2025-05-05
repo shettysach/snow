@@ -6,7 +6,7 @@ configuration {
   modi: "window,run,drun";
   show-icons: true;
   terminal: "alacritty";
-  dpi: 0;
+  dpi: -1;
 }
 
 @theme "custom"

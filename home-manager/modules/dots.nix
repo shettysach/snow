@@ -7,7 +7,6 @@
 
 {
   programs.bat.enable = true;
-
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
@@ -15,7 +14,8 @@
 
   programs.alacritty = {
     enable = true;
-    settings.window.dynamic_padding = true;
+    settings.window.decorations = "None";
+    settings.window.dynamic_padding = false;
     settings.window.padding.x = 0;
     settings.window.padding.y = 0;
   };
@@ -48,6 +48,7 @@
     };
   };
 
+  # stylix.targets.nushell.enable = false;
   programs.nushell = {
     enable = true;
     configFile.source = ../dots/nu/config.nu;
@@ -114,7 +115,8 @@
   };
 
   home.file = {
-    "${config.xdg.configHome}/i3status-rust".source = ../dots/i3status-rust;
+    # "${config.xdg.configHome}/i3status-rust".source = ../dots/i3status-rust;
+    "${config.xdg.configHome}/waybar".source = ../dots/waybar;
     "${config.xdg.configHome}/rofi".source = ../dots/rofi;
     "${config.xdg.configHome}/scripts" = {
       source = ../dots/scripts;
