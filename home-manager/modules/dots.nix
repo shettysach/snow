@@ -5,9 +5,7 @@
   ghosttyMain,
   helixMain,
   ...
-}:
-
-{
+}: {
   programs.bat.enable = true;
   programs.rofi = {
     enable = true;
@@ -101,11 +99,6 @@
   programs.starship = {
     enable = true;
     settings = lib.importTOML ../dots/starship/nerd_font_symbols.toml;
-  };
-
-  programs.joshuto = {
-    enable = true;
-    settings = lib.importTOML ../dots/joshuto/joshuto.toml;
   };
 
   programs.fastfetch = {
