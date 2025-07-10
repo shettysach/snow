@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixgl.url = "github:nix-community/nixGL";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -18,10 +19,11 @@
 
     niri.url = "github:sodiboo/niri-flake";
 
+    ghostty.url = "github:ghostty-org/ghostty";
+    helix.url = "github:helix-editor/helix";
+
     cohle.url = "github:shettysach/cohle";
     cohle.inputs.nixpkgs.follows = "nixpkgs";
-
-    glimpse.url = "github:seatedro/glimpse";
   };
 
   outputs =
@@ -54,6 +56,9 @@
           ./nixos/configuration.nix
           inputs.stylix.nixosModules.stylix
           inputs.niri.nixosModules.niri
+          # {
+          #   nixpkgs.overlays = [];
+          # }
         ];
 
       };
@@ -61,9 +66,14 @@
       homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
 
+        extraSpecialArgs = {
+          ghosttyMain = inputs.ghostty.packages.${system}.default;
+          helixMain = inputs.helix.packages.${system}.default;
+        };
+
         modules = [
           ./home-manager/home.nix
-          inputs.stylix.homeManagerModules.stylix
+          inputs.stylix.homeModules.stylix
           inputs.niri.homeModules.niri
           inputs.niri.homeModules.stylix
         ];

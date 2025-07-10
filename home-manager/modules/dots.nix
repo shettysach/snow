@@ -2,6 +2,8 @@
   lib,
   config,
   pkgs,
+  ghosttyMain,
+  helixMain,
   ...
 }:
 
@@ -12,20 +14,32 @@
     package = pkgs.rofi-wayland;
   };
 
-  programs.alacritty = {
+  stylix.targets.qt.enable = true;
+
+  programs.btop = {
     enable = true;
-    settings.window.decorations = "None";
-    settings.window.dynamic_padding = false;
-    settings.window.padding.x = 0;
-    settings.window.padding.y = 0;
+    settings.vim_keys = true;
+  };
+
+  stylix.targets.swaylock.useImage = false;
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      daemonize = true;
+      indicator-radius = 125;
+      indicator-thickness = 5;
+      font-size = 45;
+    };
   };
 
   programs.ghostty = {
+    # package = ghosttyMain;
     enable = true;
     settings = {
       resize-overlay = "never";
       window-padding-x = 0;
       window-padding-y = 0;
+      window-padding-balance = true;
       cursor-invert-fg-bg = true;
       window-decoration = false;
       confirm-close-surface = false;
@@ -78,6 +92,7 @@
   stylix.targets.helix.enable = false;
   programs.helix = {
     enable = true;
+    package = helixMain;
     settings = lib.importTOML ../dots/helix/config.toml;
     languages = lib.importTOML ../dots/helix/languages.toml;
     themes.tokyonight_transparent = lib.importTOML ../dots/helix/tokyonight_transparent.toml;
@@ -85,7 +100,7 @@
 
   programs.starship = {
     enable = true;
-    settings = lib.importTOML ../dots/starship/starship.toml;
+    settings = lib.importTOML ../dots/starship/nerd_font_symbols.toml;
   };
 
   programs.joshuto = {

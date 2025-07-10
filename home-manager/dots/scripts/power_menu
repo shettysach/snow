@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# https://github.com/jluttine/rofi-power-menu/blob/master/rofi-power-menu
+# https://raw.githubusercontent.com/jluttine/rofi-power-menu/refs/heads/master/rofi-power-menu
 
 # This script defines just a mode for rofi instead of being a self-contained
 # executable that launches rofi by itself. This makes it more flexible than
@@ -40,8 +40,7 @@ icons[shutdown]="\Uf0425"
 icons[cancel]="\Uf0156"
 
 declare -A actions
-# actions[lockscreen]="loginctl lock-session ${XDG_SESSION_ID-}"
-actions[lockscreen]="swaylock"
+actions[lockscreen]="loginctl lock-session ${XDG_SESSION_ID-}"
 #actions[switchuser]="???"
 actions[logout]="loginctl terminate-session ${XDG_SESSION_ID-}"
 actions[suspend]="systemctl suspend"
@@ -211,7 +210,9 @@ do
 done
 for entry in "${all[@]}"
 do
-    confirmationMessages[$entry]=$(write_message "${icons[$entry]}" "Yes, ${texts[$entry]}")
+    # Add zero-width space character (\u200b) to icon to ensure confirmation-
+    # and regular messages never collide.
+    confirmationMessages[$entry]=$(write_message "${icons[$entry]}\u200b" "Yes, ${texts[$entry]}")
 done
 confirmationMessages[cancel]=$(write_message "${icons[cancel]}" "No, cancel")
 

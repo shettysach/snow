@@ -63,7 +63,7 @@
       "dollar-quoted-argument" = "fg=magenta";
     };
 
-    initExtra = ''
+    initContent = ''
       function zvm_after_init() {
           bindkey '^r' fzf-history-widget
       }

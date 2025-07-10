@@ -4,8 +4,8 @@
     ./network.nix
     ./stylix.nix
 
-    ./sway.nix
     ./niri.nix
+    # ./sway.nix
     # ./i3.nix
 
     ./greetd.nix

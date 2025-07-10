@@ -53,7 +53,37 @@
     variant = "";
   };
 
-  services.printing.enable = true;
+  system.nssDatabases.hosts = [
+    "files mdns_minimal [NOTFOUND=return] dns mdns"
+  ];
+
+  # services.printing = {
+  #   enable = true;
+  #   drivers = with pkgs; [
+  #     gutenprint
+  #     epson-201401w
+  #   ];
+  #   browsing = true;
+  #   defaultShared = true;
+  #   openFirewall = true;
+  #   browsedConf = ''
+  #     BrowseDNSSDSubTypes _cups,_print
+  #     BrowseLocalProtocols all
+  #     BrowseRemoteProtocols all
+  #     CreateIPPPrinterQueues All
+  #     BrowseProtocols all
+  #   '';
+  # };
+  #
+  # services.avahi = {
+  #   enable = true;
+  #   nssmdns = true;
+  #   openFirewall = true;
+  #   publish = {
+  #     enable = true;
+  #     userServices = true;
+  #   };
+  # };
 
   services.pulseaudio.enable = false;
   services.pipewire = {

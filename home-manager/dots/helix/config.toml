@@ -35,4 +35,3 @@ tab = ":buffer-next"
 
 [keys.normal.space]
 i = ":toggle-option lsp.display-inlay-hints"
-v = ":sh alacritty"

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   stylix = {
     enable = true;
     autoEnable = true;
@@ -22,6 +20,9 @@
       monospace = {
         name = "JetBrainsMono Nerd Font";
         package = pkgs.nerd-fonts.jetbrains-mono;
+
+        # name = "Terminess Nerd Font";
+        # package = pkgs.nerd-fonts.terminess-ttf;
       };
 
       sizes = {
@@ -48,5 +49,4 @@
       light = "breeze";
     };
   };
-
 }

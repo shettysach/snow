@@ -1,124 +1,98 @@
 {
+  lib,
   inputs,
   pkgs,
-  pkgs-stable,
   ...
-}:
-
-{
+}: {
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = lib.attrValues {
+    inherit
+      (pkgs)
+      # -- Nix --
+      home-manager
+      alejandra
+      nixd
+      nil
+      # -- Dev --
+      git
+      git-lfs
+      difftastic
+      neovim
+      zed-editor-fhs
+      gemini-cli
+      nix-direnv
+      direnv
+      nushell
+      obsidian
+      texliveSmall
+      # -- TUI / CLI utils --
+      fastfetch
+      file
+      jq
+      joshuto
+      dua
+      zoxide
+      ripgrep
+      lsd
+      eza
+      bat
+      delta
+      fzf
+      fd
+      killall
+      btop
+      mpv
+      imv
+      zip
+      unzip
+      spotify-player
+      gammastep
+      networkmanagerapplet
+      playerctl
+      pulseaudio
+      pulseaudio-ctl
+      pavucontrol
+      # -- windowManager --
+      wl-clipboard
+      wlr-randr
+      clipse
+      rofi-wayland
+      autotiling-rs
+      waybar
+      dunst
+      libnotify
+      swayidle
+      swaylock
+      # -- GUI apps --
+      brave
+      librewolf
+      firefox
+      newsflash
+      zathura
+      fractal
+      ;
 
-    # -- Nix --
+    inherit
+      (pkgs.xfce)
+      thunar
+      thunar-volman
+      thunar-archive-plugin
+      thunar-media-tags-plugin
+      tumbler
+      ;
 
-    home-manager
-    nixfmt-rfc-style
-    nixd
-    nil
+    inherit (pkgs.nvtopPackages) nvidia;
 
-    # -- Dev --
+    # inherit (pkgs) ghostty;
+    ghostty = inputs.ghostty.packages.${pkgs.system}.default;
+    helix = inputs.helix.packages.${pkgs.system}.default;
+    cohle = inputs.cohle.packages.${pkgs.system}.default;
+  };
 
-    alacritty
-    ghostty
+  fonts.packages = lib.attrValues {
+    inherit (pkgs) lora;
 
-    git
-    git-lfs
-    difftastic
-
-    neovim
-    helix
-
-    nix-direnv
-    direnv
-
-    nushell
-
-    obsidian
-    texliveSmall
-
-    # TUI / CLI utils
-
-    fastfetch
-
-    btop
-    nvtopPackages.nvidia
-
-    file
-    jq
-
-    joshuto
-    dua
-
-    zoxide
-    ripgrep
-
-    lsd
-    eza
-
-    bat
-    delta
-
-    fzf
-    fd
-
-    killall
-
-    mpv
-    imv
-
-    zip
-    unzip
-
-    gammastep
-
-    networkmanagerapplet
-
-    playerctl
-    pulseaudio
-    pulseaudio-ctl
-    pavucontrol
-
-    # windowManager
-
-    wl-clipboard
-    wlr-randr
-    clipse
-
-    rofi-wayland
-    autotiling-rs
-    waybar
-
-    dunst
-    libnotify
-
-    swayidle
-    swaylock
-
-    # GUI
-
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
-
-    brave
-    pkgs-stable.librewolf
-
-    newsflash
-    zathura
-    fractal
-
-    kdePackages.kdeconnect-kde
-
-    # Misc
-
-    inputs.cohle.packages."${pkgs.system}".default
-    inputs.glimpse.packages."${pkgs.system}".default
-  ];
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    lora
-  ];
+    inherit (pkgs.nerd-fonts) jetbrains-mono;
+  };
 }
